@@ -24,7 +24,7 @@ public class MergeSorter implements Callable<List<Integer>> {
         MergeSorter leftSorter = new MergeSorter(left,executor);
         MergeSorter rightSorter = new MergeSorter(right,executor);
 
-        Future<List<Integer>> leftFuture = executor.submit(leftSorter);
+        Future<List<Integer>> leftFuture = executor.submit(leftSorter);// creating a new thread
         Future<List<Integer>> rightFuture = executor.submit(rightSorter);
 
         return merge(leftFuture,rightFuture);
