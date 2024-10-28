@@ -12,10 +12,11 @@ public class ConnectionPool {
     }
 // Global access point
     public static ConnectionPool getInstance(){
+        // Double check locking
        if(INSTANCE==null){
            synchronized (ConnectionPool.class){
                if(INSTANCE==null){
-                   INSTANCE = new ConnectionPool(); // Lazy Initialization (On demand)
+                   INSTANCE = new ConnectionPool(); // Lazy Initialization (creates objects on demand)
                }
            }
        }

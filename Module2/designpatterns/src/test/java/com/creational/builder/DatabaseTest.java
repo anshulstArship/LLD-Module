@@ -7,5 +7,6 @@ public class DatabaseTest {
                 mySql().
                 withCredentials("abc","123").
                setCompressed().build();
+        //System.out.println(database.);
     }
 }

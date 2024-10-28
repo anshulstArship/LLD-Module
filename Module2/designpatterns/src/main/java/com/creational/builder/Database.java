@@ -21,58 +21,57 @@ public class Database {
 
     // Step 1 - Create Inner class
     public static class Builder{
-        private String name;
-        private String userName;
-        private String password;
-        private DatabaseType type;
-        private boolean isCompressed;
-        private Integer port;
+       private Database database;
+
+       public Builder(){
+           database=new Database();
+       }
 
 
 // Fluent Interfaces - Allow us to chain methods
         public Builder name(String name) {
-            this.name = name;
+            database.name = name;
             return this;
         }
 
         public Builder withCredentials(String userName,String password) {
-            this.userName = userName;
-            this.password=password;
+            database.userName = userName;
+            database.password=password;
             return this;
         }
 
         public Builder setPassword(String password) {
-            this.password = password;
+            database.password = password;
             return this;
         }
 
         public Builder setType(DatabaseType type) {
-            this.type = type;
+            database.type = type;
             return this;
         }
         public Builder mySql(){
-            this.type=DatabaseType.MYSQL;
+            database.type=DatabaseType.MYSQL;
             return this;
         }
 
         public Builder setCompressed() {
-            this.isCompressed = true;
+            database.isCompressed = true;
             return this;
         }
         public Database build(){
-            Database database = new Database();
+            Database newdatabase = new Database();
 //            if(!isValidate()){
 //                throw new IllegalArgumentException("Bad type");
 //            }
-            database.name=name;
-            database.password=password;
-            database.isCompressed=isCompressed;
-            database.userName=userName;
-            database.type=type;
-            return database;
+            newdatabase.name=database.name;
+            newdatabase.password=database.password;
+            newdatabase.isCompressed=database.isCompressed;
+            newdatabase.userName=database.userName;
+            newdatabase.type=database.type;
+            return newdatabase;
         }
         private boolean isValidate(){
-            if(type==DatabaseType.MYSQL){
+            if(database.type==DatabaseType.MYSQL){
                 return false;
             }
             return true;
