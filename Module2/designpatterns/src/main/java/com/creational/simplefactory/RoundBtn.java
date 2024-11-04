@@ -1,6 +1,4 @@
-package com.creational.factory;
-
-import lombok.AllArgsConstructor;
+package com.creational.simplefactory;
 
 // Step 2 - Create Concrete Class
 public class RoundBtn extends Button{

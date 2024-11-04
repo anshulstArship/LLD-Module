@@ -1,4 +1,4 @@
-package com.creational.factory;
+package com.creational.simplefactory;
 
 public class ButtonFactory {
     // Step 3 - Create a static Factory Method

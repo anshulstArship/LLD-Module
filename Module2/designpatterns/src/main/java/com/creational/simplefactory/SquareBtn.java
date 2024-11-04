@@ -1,6 +1,4 @@
-package com.creational.factory;
-
-import lombok.AllArgsConstructor;
+package com.creational.simplefactory;
 
 
 public class SquareBtn extends Button{
