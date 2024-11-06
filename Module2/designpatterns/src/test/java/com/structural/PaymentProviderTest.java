@@ -1,6 +1,7 @@
 package com.structural;
 
 import com.structural.adapter.PaymentProvider;
+import com.structural.adapter.PaymentRequest;
 import com.structural.adapter.PaymentStatus;
 import com.structural.adapter.RazorPayAdapter;
 import org.junit.jupiter.api.Assertions;
@@ -11,7 +12,7 @@ public class PaymentProviderTest {
     @Test
     public void testCreatePayment(){
 
-        provider.createPayment(1L,"Anshul","abc",100.0);
+        provider.createPayment(PaymentRequest.builder().id(1L).name("Anshul").email("abc").amount(100.0).build());
     }
 
     @Test

@@ -7,8 +7,8 @@ public class PayUAdapter implements PaymentProvider{
 
     PayUAPI payuApi = new PayUAPI();
     @Override
-    public void createPayment(Long id, String name, String email, Double amount) {
-        payuApi.makePayment(id,amount);
+    public void createPayment(PaymentRequest request) {
+        payuApi.makePayment(request.getId(), request.getAmount());
 
     }
 
