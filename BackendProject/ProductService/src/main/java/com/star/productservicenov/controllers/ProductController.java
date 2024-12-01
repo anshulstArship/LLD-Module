@@ -2,6 +2,8 @@ package com.star.productservicenov.controllers;
 
 import com.star.productservicenov.models.Product;
 import com.star.productservicenov.services.ProductService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,9 +21,9 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product getSingleProduct(@PathVariable Long id){
+    public ResponseEntity<Product> getSingleProduct(@PathVariable Long id){
 
-        return productService.getSingleProduct(id);
+        return new ResponseEntity<>(productService.getSingleProduct(id), HttpStatus.OK);
     }
 
     @GetMapping
