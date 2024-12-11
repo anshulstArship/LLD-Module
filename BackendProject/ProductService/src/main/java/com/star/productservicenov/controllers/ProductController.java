@@ -1,7 +1,9 @@
 package com.star.productservicenov.controllers;
 
+import com.star.productservicenov.exceptions.ProductNotFoundExcption;
 import com.star.productservicenov.models.Product;
 import com.star.productservicenov.services.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +17,13 @@ public class ProductController {
 
     private ProductService productService;
 
-    public ProductController(ProductService productService){
+    public ProductController(@Qualifier("selfProductService") ProductService productService){
         this.productService=productService;
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getSingleProduct(@PathVariable Long id){
+    public ResponseEntity<Product> getSingleProduct(@PathVariable Long id) throws ProductNotFoundExcption {
 
         return new ResponseEntity<>(productService.getSingleProduct(id), HttpStatus.OK);
     }
@@ -33,6 +35,7 @@ public class ProductController {
 
     @PostMapping()
     public void createProduct(@RequestBody Product product){
+        productService.createProduct(product);
 
     }
 
