@@ -25,4 +25,19 @@ public class Board {
     public List<List<BoardCell>> getCells() {
         return cell;
     }
+
+    public boolean isEmpty(int row, int col) {
+        return cell.get(row).get(col) == null;
+    }
+
+    public void update(BoardCell move) {
+        cell.get(move.getRow()).get(move.getColumn()).setSymbol(move.getSymbol());
+        BoardCell cell = getBoardCell(move.getRow(),move.getColumn());
+        cell.setRow(move.getRow());
+        cell.setColumn(move.getColumn());
+    }
+
+    private BoardCell getBoardCell(int row, int column) {
+        return cell.get(row).get(column);
+    }
 }
